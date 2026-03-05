@@ -26,6 +26,8 @@ export const useAuth = () => {
       setSession(existingSession);
       setUser(existingSession?.user ?? null);
       setLoading(false);
+    }).catch(() => {
+      if (isMounted) setLoading(false);
     });
 
     return () => {
